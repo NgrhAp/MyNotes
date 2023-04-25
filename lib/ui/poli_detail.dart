@@ -72,11 +72,15 @@ class _PoliDetailState extends State<PoliDetail> {
                 ),
               ),
               const SizedBox(height: 40),
-              Align(
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  "${snapshot.data.deskripsiPoli}",
-                  style: const TextStyle(fontSize: 20, fontFamily: 'Helvetica'),
+              Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    "${snapshot.data.deskripsiPoli}",
+                    style:
+                        const TextStyle(fontSize: 20, fontFamily: 'Helvetica'),
+                  ),
                 ),
               ),
               const SizedBox(height: 40),

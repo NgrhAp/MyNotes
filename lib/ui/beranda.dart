@@ -10,31 +10,26 @@ class Beranda extends StatelessWidget {
         drawer: const Sidebar(),
         appBar: AppBar(
           backgroundColor: Colors.blueGrey,
-          title: const Text('MyNotes'),
+          title: const Text(
+            'MyNotes',
+            style: TextStyle(fontSize: 30),
+          ),
           titleTextStyle: const TextStyle(fontFamily: 'Helvetica'),
         ),
         body: Column(
           children: [
             const SizedBox(height: 20),
-            const Align(
-              alignment: Alignment.centerLeft,
-              child: Text(
-                "My \nNotes",
-                style: TextStyle(
-                  fontSize: 80,
-                  fontFamily: 'Helvetica',
-                ),
-              ),
-            ),
-            const SizedBox(height: 10),
-            const Align(
-              alignment: Alignment.centerLeft,
-              child: Text(
-                "Each note that you've created is proof\nthat you've worked and produced something meaningful",
-                style: TextStyle(
-                  fontSize: 20,
-                  fontFamily: 'Helvetica',
-                  textBaseline: TextBaseline.alphabetic,
+            const Padding(
+              padding: EdgeInsets.all(12.0),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  "Each note that you've created is proof\nthat you've worked and produced something meaningful",
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontFamily: 'Helvetica',
+                    textBaseline: TextBaseline.alphabetic,
+                  ),
                 ),
               ),
             ),

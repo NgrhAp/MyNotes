@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:klinik_pahase2/service/login_service.dart';
 
-import 'beranda.dart';
+import 'poli_page.dart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
@@ -138,8 +138,10 @@ class _LoginState extends State<Login> {
               String password = _passwordCtrl.text;
               await LoginService().login(username, password).then((value) {
                 if (value == true) {
-                  Navigator.pushReplacement(context,
-                      MaterialPageRoute(builder: (context) => const Beranda()));
+                  Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const PoliPage()));
                 } else {
                   AlertDialog alertDialog = AlertDialog(
                     content: const Text(
