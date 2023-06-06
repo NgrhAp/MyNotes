@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import '../service/poli_service.dart';
 import 'poli_page.dart';
 import 'poli_update_form.dart';
@@ -21,28 +22,22 @@ class _PoliDetailState extends State<PoliDetail> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.blueGrey,
+        backgroundColor: const Color(0xFF0C9869),
         elevation: 0,
-        title: const Text(
-          "MyNotes",
-          style: TextStyle(fontFamily: 'Helvetica'),
+        leading: IconButton(
+          icon: SvgPicture.asset(
+            'assets/icons/back.svg', // Replace with your SVG icon path
+            width: 40, // Set the desired width for the icon
+            height: 40, // Set the desired height for the icon
+          ),
+          onPressed: () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const PoliPage(),
+                ));
+          },
         ),
-        actions: [
-          StreamBuilder(
-              stream: getData(),
-              builder: (context, AsyncSnapshot snapshot) => ElevatedButton(
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) =>
-                                  PoliUpdateForm(poli: snapshot.data)));
-                    },
-                    style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.blueGrey, elevation: 0),
-                    child: const Icon(Icons.edit_outlined),
-                  ))
-        ],
       ),
       body: StreamBuilder(
         stream: getData(),
@@ -55,8 +50,7 @@ class _PoliDetailState extends State<PoliDetail> {
               child: CircularProgressIndicator(),
             );
           }
-          if (!snapshot.hasData &&
-              snapshot.connectionState == ConnectionState.done) {
+          if (!snapshot.hasData && snapshot.connectionState == ConnectionState.done) {
             return const Text('Data Tidak Ditemukan');
           }
           return Column(
@@ -66,9 +60,7 @@ class _PoliDetailState extends State<PoliDetail> {
                 child: Text(
                   "${snapshot.data.namaPoli}",
                   style: const TextStyle(
-                      fontSize: 30,
-                      fontFamily: 'Helvetica',
-                      fontWeight: FontWeight.bold),
+                      fontSize: 30, fontFamily: 'Helvetica', fontWeight: FontWeight.bold),
                 ),
               ),
               const SizedBox(height: 40),
@@ -78,8 +70,7 @@ class _PoliDetailState extends State<PoliDetail> {
                   alignment: Alignment.centerLeft,
                   child: Text(
                     "${snapshot.data.deskripsiPoli}",
-                    style:
-                        const TextStyle(fontSize: 20, fontFamily: 'Helvetica'),
+                    style: const TextStyle(fontSize: 20, fontFamily: 'Helvetica'),
                   ),
                 ),
               ),
@@ -95,25 +86,6 @@ class _PoliDetailState extends State<PoliDetail> {
     );
   }
 
-  // _tombolUbah() {
-  //   return StreamBuilder(
-  //       stream: getData(),
-  //       builder: (context, AsyncSnapshot snapshot) => ElevatedButton(
-  //             onPressed: () {
-  //               Navigator.push(
-  //                   context,
-  //                   MaterialPageRoute(
-  //                       builder: (context) =>
-  //                           PoliUpdateForm(poli: snapshot.data)));
-  //             },
-  //             style: ElevatedButton.styleFrom(
-  //                 backgroundColor: Colors.blueGrey, elevation: 0),
-  //             child: const Text(
-  //               "EDIT",
-  //               style: TextStyle(fontFamily: 'Helvetica'),
-  //             ),
-  //           ));
-  // }
 
   _tombolHapus() {
     return ElevatedButton(
@@ -128,10 +100,8 @@ class _PoliDetailState extends State<PoliDetail> {
                       onPressed: () async {
                         await PoliService().hapus(snapshot.data).then((value) {
                           Navigator.pop(context);
-                          Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const PoliPage()));
+                          Navigator.pushReplacement(context,
+                              MaterialPageRoute(builder: (context) => const PoliPage()));
                         });
                       },
                       style: ElevatedButton.styleFrom(
@@ -148,13 +118,11 @@ class _PoliDetailState extends State<PoliDetail> {
               onPressed: () {
                 Navigator.pop(context);
               },
-              style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.white, elevation: 0),
+              style:
+                  ElevatedButton.styleFrom(backgroundColor: Colors.white, elevation: 0),
               child: const Text("NO",
                   style: TextStyle(
-                      color: Colors.blueGrey,
-                      fontSize: 16,
-                      fontFamily: 'Helvetica')),
+                      color: Colors.blueGrey, fontSize: 16, fontFamily: 'Helvetica')),
             )
           ],
         );

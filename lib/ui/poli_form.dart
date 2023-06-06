@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:klinik_pahase2/model/poli.dart';
 import 'package:klinik_pahase2/service/poli_service.dart';
+import 'package:klinik_pahase2/ui/poli_page.dart';
 import 'poli_detail.dart';
 
 class PoliForm extends StatefulWidget {
@@ -16,37 +18,74 @@ class _PoliFormState extends State<PoliForm> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-          backgroundColor: Colors.blueGrey,
+        appBar: AppBar(
+          backgroundColor: const Color(0xFF0C9869),
           elevation: 0,
-          title: const Text(
-            "New Note",
-            style: TextStyle(fontFamily: 'Helvetica'),
-          )),
-      body: SingleChildScrollView(
-        child: Form(
-          key: _formKey,
-          child: Column(
-            children: [
-              const SizedBox(height: 20),
-              _fieldNamaPoli(),
-              const SizedBox(height: 20),
-              _fieldDeskripsiPoli(),
-              const SizedBox(height: 20),
-              _tombolSimpan()
-            ],
+          leading: IconButton(
+            icon: SvgPicture.asset(
+              'assets/icons/back.svg', // Replace with your SVG icon path
+              width: 40, // Set the desired width for the icon
+              height: 40, // Set the desired height for the icon
+            ),
+            onPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const PoliPage(),
+                  ));
+            },
           ),
         ),
-      ),
-    );
+        body: Stack(
+          children: [
+            ListView(
+              children: [
+                Container(
+                  decoration: const BoxDecoration(
+                    color: Color(0xFF0C9869),
+                    borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(20),
+                      bottomRight: Radius.circular(20),
+                    ),
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: const [
+                      SizedBox(height: 5), // Add some vertical spacing
+                      Text(
+                        "Add New",
+                        style: TextStyle(
+                          fontSize: 60,
+                          // fontWeight: FontWeight.bold,
+                          color: Color(0xFFF9F8FD),
+                          fontFamily: 'Helvetica',
+                        ),
+                      ),
+                      SizedBox(height: 30),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 20),
+                Expanded(
+                  child: _fieldNamaPoli(),
+                ),
+                const SizedBox(height: 20),
+                Expanded(
+                  child: _fieldDeskripsiPoli(),
+                ),
+                const SizedBox(height: 20),
+                _tombolSimpan(),
+              ],
+            )
+          ],
+        ));
   }
 
   _fieldNamaPoli() {
     return TextField(
       decoration: InputDecoration(
         labelText: "Title",
-        labelStyle:
-            const TextStyle(color: Colors.blueGrey, fontFamily: 'Helvetica'),
+        labelStyle: const TextStyle(color: Colors.blueGrey, fontFamily: 'Helvetica'),
         hintStyle: const TextStyle(color: Colors.blueGrey),
         border: OutlineInputBorder(
           borderSide: const BorderSide(color: Colors.blueGrey),
@@ -67,10 +106,8 @@ class _PoliFormState extends State<PoliForm> {
     return TextField(
       decoration: InputDecoration(
         labelText: "Description",
-        labelStyle:
-            const TextStyle(color: Colors.blueGrey, fontFamily: 'Helvetica'),
-        hintStyle:
-            const TextStyle(color: Colors.blueGrey, fontFamily: 'Helvetica'),
+        labelStyle: const TextStyle(color: Colors.blueGrey, fontFamily: 'Helvetica'),
+        hintStyle: const TextStyle(color: Colors.blueGrey, fontFamily: 'Helvetica'),
         border: OutlineInputBorder(
           borderSide: const BorderSide(color: Colors.blueGrey),
           borderRadius: BorderRadius.circular(5),
@@ -82,29 +119,35 @@ class _PoliFormState extends State<PoliForm> {
       ),
       controller: _deskripsiPoliCtrl,
       cursorColor: Colors.blueGrey,
-      style: const TextStyle(
-          fontSize: 20, color: Colors.black, fontFamily: 'Helvetica'),
+      style: const TextStyle(fontSize: 20, color: Colors.black, fontFamily: 'Helvetica'),
       maxLines: null, // set text color to black
     );
   }
 
   _tombolSimpan() {
-    return ElevatedButton(
-        onPressed: () async {
-          Poli poli = Poli(
-              namaPoli: _namaPoliCtrl.text,
-              deskripsiPoli: _deskripsiPoliCtrl.text);
-          await PoliService().simpan(poli).then((value) {
-            Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => PoliDetail(poli: value)));
-          });
-        },
-        style: ElevatedButton.styleFrom(
-            backgroundColor: Colors.blueGrey, elevation: 0),
-        child: const Text(
-          "Save",
-        ));
+    return IconButton(
+      onPressed: () async {
+        Poli poli = Poli(
+          namaPoli: _namaPoliCtrl.text,
+          deskripsiPoli: _deskripsiPoliCtrl.text,
+        );
+        await PoliService().simpan(poli).then((value) {
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(builder: (context) => PoliDetail(poli: value)),
+          );
+        });
+      },
+      icon: Transform.scale(
+        scale: 2, // Adjust the scale factor to increase or decrease the size
+        child: SvgPicture.asset(
+          'assets/icons/save.svg', // Replace with the path to your SVG icon file
+          colorFilter: const ColorFilter.mode(
+            Color(0xFF0C9869),
+            BlendMode.srcIn,
+          ),
+        ),
+      ),
+    );
   }
 }

@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:klinik_pahase2/ui/poli_form.dart';
 import '../model/poli.dart';
 import '../service/poli_service.dart';
-import 'poli_detail.dart';
-import 'poli_form.dart';
 import 'poli_item.dart';
-import '../widget/sidebar.dart';
 
 class PoliPage extends StatefulWidget {
   const PoliPage({Key? key}) : super(key: key);
@@ -20,31 +19,8 @@ class _PoliPageState extends State<PoliPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: const Sidebar(),
-      appBar: AppBar(
-        backgroundColor: Colors.blueGrey,
-        title: const Text(
-          "My Notes",
-          style:
-              TextStyle(fontFamily: 'Helvetica', fontWeight: FontWeight.bold),
-        ),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: GestureDetector(
-              child: const Icon(Icons.add),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const PoliForm()),
-                );
-              },
-            ),
-          )
-        ],
-      ),
       body: Container(
-        color: Colors.grey[200],
+        color: const Color(0xFFF9F8FD),
         child: StreamBuilder(
           stream: getList(),
           builder: (context, AsyncSnapshot snapshot) {
@@ -66,8 +42,7 @@ class _PoliPageState extends State<PoliPage> {
                 ),
               );
             }
-            if (!snapshot.hasData &&
-                snapshot.connectionState == ConnectionState.done) {
+            if (!snapshot.hasData && snapshot.connectionState == ConnectionState.done) {
               return const Text(
                 'Data Kosong',
                 style: TextStyle(
@@ -78,32 +53,86 @@ class _PoliPageState extends State<PoliPage> {
               );
             }
 
-            return Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
+            return Stack(
               children: [
-                const Padding(
-                  padding:
-                      EdgeInsets.symmetric(horizontal: 25.0, vertical: 12.0),
-                  child: Text(
-                    "Each note that you've created is proof\nthat you've worked and produced something meaningful",
-                    style: TextStyle(
-                      fontSize: 24,
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Container(
+                      decoration: const BoxDecoration(
+                        color: Color(0xFF0C9869),
+                        borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.circular(20),
+                          bottomRight: Radius.circular(20),
+                        ),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 25.0, top: 60),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: const [
+                            SizedBox(height: 35), // Add some vertical spacing
+                            Text(
+                              "Notes",
+                              style: TextStyle(
+                                fontSize: 60,
+                                // fontWeight: FontWeight.bold,
+                                color: Color(0xFFF9F8FD),
+                                fontFamily: 'Helvetica',
+                              ),
+                            ),
+                            SizedBox(height: 30),
+                          ],
+                        ),
+                      ),
                     ),
-                  ),
+                    Expanded(
+                      child: ListView.builder(
+                        itemCount: snapshot.data.length,
+                        itemBuilder: (context, index) {
+                          return Padding(
+                            padding: const EdgeInsets.only(
+                                left: 25.0, bottom: 10.0, right: 35.0),
+                            child: PoliItem(
+                              poli: snapshot.data[index],
+                              textStyle: const TextStyle(
+                                color: Colors.black87,
+                                fontSize: 50,
+                                fontWeight: FontWeight.bold,
+                                fontFamily: 'Helvetica',
+                              ),
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+                  ],
                 ),
-                Expanded(
-                  child: ListView.builder(
-                    itemCount: snapshot.data.length,
-                    itemBuilder: (context, index) {
-                      return PoliItem(
-                        poli: snapshot.data[index],
-                        textStyle: const TextStyle(
-                            color: Colors.black87,
-                            fontSize: 50,
-                            fontWeight: FontWeight.bold,
-                            fontFamily: 'Helvetica'),
-                      );
-                    },
+                Positioned(
+                  bottom: 20.0,
+                  right: 30.0,
+                  child: Row(
+                    children: [
+                      IconButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => const PoliForm()),
+                          );
+                        },
+                        icon: Transform.scale(
+                          scale:
+                              2, // Adjust the scale factor to increase or decrease the size
+                          child: SvgPicture.asset(
+                            'assets/icons/add.svg', // Replace with the path to your SVG icon file
+                            colorFilter: const ColorFilter.mode(
+                              Color(0xFF0C9869),
+                              BlendMode.srcIn,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ],
