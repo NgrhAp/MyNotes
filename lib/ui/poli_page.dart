@@ -60,25 +60,25 @@ class _PoliPageState extends State<PoliPage> {
                   children: [
                     Container(
                       decoration: const BoxDecoration(
-                        color: Color(0xFF0C9869),
+                        // color: Color(0xFF0C9869),
                         borderRadius: BorderRadius.only(
                           bottomLeft: Radius.circular(20),
                           bottomRight: Radius.circular(20),
                         ),
                       ),
                       child: Padding(
-                        padding: const EdgeInsets.only(left: 25.0, top: 60),
+                        padding: const EdgeInsets.only(left: 40.0, top: 40),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: const [
-                            SizedBox(height: 35), // Add some vertical spacing
+                            SizedBox(height: 25), // Add some vertical spacing
                             Text(
                               "Notes",
                               style: TextStyle(
                                 fontSize: 60,
                                 // fontWeight: FontWeight.bold,
-                                color: Color(0xFFF9F8FD),
-                                fontFamily: 'Helvetica',
+                                color: Colors.black,
+                                fontFamily: 'sfmonoBold',
                               ),
                             ),
                             SizedBox(height: 30),
@@ -111,28 +111,48 @@ class _PoliPageState extends State<PoliPage> {
                 Positioned(
                   bottom: 20.0,
                   right: 30.0,
-                  child: Row(
-                    children: [
-                      IconButton(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) => const PoliForm()),
-                          );
-                        },
-                        icon: Transform.scale(
-                          scale:
-                              2, // Adjust the scale factor to increase or decrease the size
-                          child: SvgPicture.asset(
-                            'assets/icons/add.svg', // Replace with the path to your SVG icon file
-                            colorFilter: const ColorFilter.mode(
-                              Color(0xFF0C9869),
-                              BlendMode.srcIn,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: const BorderRadius.all(
+                        Radius.circular(50),
+                      ),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.5),
+                          spreadRadius: 2,
+                          blurRadius: 5,
+                          offset: const Offset(0, 3), // changes position of shadow
+                        ),
+                      ],
+                    ),
+                    child: Row(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: CircleAvatar(
+                            backgroundColor: Colors.transparent,
+                            radius: 20,
+                            child: IconButton(
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => const PoliForm()),
+                                );
+                              },
+                              icon: Transform.scale(
+                                scale:
+                                    1, // Adjust the scale factor to increase or decrease the size
+                                child: SvgPicture.asset(
+                                  'assets/icons/add.svg', // Replace with the path to your SVG icon file
+                                ),
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               ],

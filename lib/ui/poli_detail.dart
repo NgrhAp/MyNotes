@@ -22,7 +22,7 @@ class _PoliDetailState extends State<PoliDetail> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color(0xFF0C9869),
+        backgroundColor: Colors.transparent,
         elevation: 0,
         leading: IconButton(
           icon: SvgPicture.asset(
@@ -38,6 +38,13 @@ class _PoliDetailState extends State<PoliDetail> {
                 ));
           },
         ),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.all(
+                8.0), // Adjust the padding values as per your preference
+            child: _tombolHapus(),
+          ),
+        ],
       ),
       body: StreamBuilder(
         stream: getData(),
@@ -53,31 +60,91 @@ class _PoliDetailState extends State<PoliDetail> {
           if (!snapshot.hasData && snapshot.connectionState == ConnectionState.done) {
             return const Text('Data Tidak Ditemukan');
           }
-          return Column(
+          return Stack(
             children: [
-              const SizedBox(height: 20),
-              Center(
-                child: Text(
-                  "${snapshot.data.namaPoli}",
-                  style: const TextStyle(
-                      fontSize: 30, fontFamily: 'Helvetica', fontWeight: FontWeight.bold),
-                ),
+              ListView(
+                children: [
+                  Container(
+                    decoration: const BoxDecoration(
+                      color: Colors.transparent,
+                      borderRadius: BorderRadius.only(
+                        bottomLeft: Radius.circular(20),
+                        bottomRight: Radius.circular(20),
+                      ),
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        const SizedBox(height: 5), // Add some vertical spacing
+                        Text(
+                          "${snapshot.data.namaPoli}",
+                          style: const TextStyle(
+                            fontSize: 60,
+                            // fontWeight: FontWeight.bold,
+                            fontFamily: 'Helvetica',
+                          ),
+                        ),
+                        const SizedBox(height: 20),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        "${snapshot.data.deskripsiPoli}",
+                        style: const TextStyle(
+                          fontSize: 20,
+                          fontFamily: 'Helvetica',
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
               ),
-              const SizedBox(height: 40),
-              Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Align(
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    "${snapshot.data.deskripsiPoli}",
-                    style: const TextStyle(fontSize: 20, fontFamily: 'Helvetica'),
+              Positioned(
+                bottom: 20.0,
+                right: 30.0,
+                // Apply circular shape to the Material widget
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: const BorderRadius.all(
+                      Radius.circular(80),
+                    ),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.5),
+                        spreadRadius: 2,
+                        blurRadius: 5,
+                        offset: const Offset(0, 3), // changes position of shadow
+                      ),
+                    ],
+                  ),
+                  child: CircleAvatar(
+                    backgroundColor: Colors.transparent,
+                    radius: 28,
+                    child: IconButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => PoliUpdateForm(poli: snapshot.data),
+                          ),
+                        );
+                      },
+                      icon: Transform.scale(
+                        scale:
+                            1, // Adjust the scale factor to increase or decrease the size
+                        child: const Icon(
+                          Icons.mode_edit,
+                          color: Colors.black,
+                        ),
+                      ),
+                    ),
                   ),
                 ),
-              ),
-              const SizedBox(height: 40),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [_tombolHapus()],
               )
             ],
           );
@@ -86,54 +153,71 @@ class _PoliDetailState extends State<PoliDetail> {
     );
   }
 
-
   _tombolHapus() {
-    return ElevatedButton(
+    return IconButton(
       onPressed: () {
         AlertDialog alertDialog = AlertDialog(
-          content: const Text("Are you sure want to delete this note?",
-              style: TextStyle(fontSize: 20, fontFamily: 'Helvetica')),
+          content: const Text(
+            "Are you sure want to delete this note?",
+            style: TextStyle(fontSize: 20, fontFamily: 'Helvetica'),
+          ),
           actions: [
             StreamBuilder(
-                stream: getData(),
-                builder: (context, AsyncSnapshot snapshot) => ElevatedButton(
-                      onPressed: () async {
-                        await PoliService().hapus(snapshot.data).then((value) {
-                          Navigator.pop(context);
-                          Navigator.pushReplacement(context,
-                              MaterialPageRoute(builder: (context) => const PoliPage()));
-                        });
-                      },
-                      style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.white, elevation: 0),
-                      child: const Text(
-                        "YES",
-                        style: TextStyle(
-                            color: Colors.blueGrey,
-                            fontSize: 16,
-                            fontFamily: 'Helvetica'),
-                      ),
-                    )),
+              stream: getData(),
+              builder: (context, AsyncSnapshot snapshot) => ElevatedButton(
+                onPressed: () async {
+                  await PoliService().hapus(snapshot.data).then((value) {
+                    Navigator.pop(context);
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(builder: (context) => const PoliPage()),
+                    );
+                  });
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.white,
+                  elevation: 0,
+                ),
+                child: const Text(
+                  "YES",
+                  style: TextStyle(
+                    color: Colors.blueGrey,
+                    fontSize: 16,
+                    fontFamily: 'Helvetica',
+                  ),
+                ),
+              ),
+            ),
             ElevatedButton(
               onPressed: () {
                 Navigator.pop(context);
               },
-              style:
-                  ElevatedButton.styleFrom(backgroundColor: Colors.white, elevation: 0),
-              child: const Text("NO",
-                  style: TextStyle(
-                      color: Colors.blueGrey, fontSize: 16, fontFamily: 'Helvetica')),
-            )
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.white,
+                elevation: 0,
+              ),
+              child: const Text(
+                "NO",
+                style: TextStyle(
+                  color: Colors.blueGrey,
+                  fontSize: 16,
+                  fontFamily: 'Helvetica',
+                ),
+              ),
+            ),
           ],
         );
         showDialog(context: context, builder: (context) => alertDialog);
       },
-      style: ElevatedButton.styleFrom(
-          backgroundColor: Colors.white,
-          side: const BorderSide(color: Colors.red),
-          elevation: 0),
-      child: const Text("DELETE",
-          style: TextStyle(color: Colors.red, fontFamily: 'Helvetica')),
+      icon: SvgPicture.asset(
+        'assets/icons/delete.svg',
+        colorFilter: const ColorFilter.mode(
+          Colors.red,
+          BlendMode.srcIn,
+        ),
+        width: 80,
+        height: 80, // Replace with the path to your SVG icon
+      ), // Set the desired color for the icon
     );
   }
 }

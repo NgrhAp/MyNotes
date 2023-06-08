@@ -81,6 +81,12 @@ flutter:
     - family: Helvetica
       fonts:
         - asset: fonts/Helvetica Neue 67 Medium Condensed.otf
+    - family: sfmonoBold
+      fonts:
+        - asset: fonts/SFMonoBold.woff
+    - family: sfmonoLight
+      fonts:
+        - asset: fonts/SFMonoLight.woff
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro

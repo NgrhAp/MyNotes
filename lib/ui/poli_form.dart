@@ -61,7 +61,7 @@ class _PoliFormState extends State<PoliForm> {
                           fontFamily: 'Helvetica',
                         ),
                       ),
-                      SizedBox(height: 30),
+                      SizedBox(height: 20),
                     ],
                   ),
                 ),

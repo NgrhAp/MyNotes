@@ -19,22 +19,37 @@ class PoliItem extends StatelessWidget {
         );
       },
       child: Padding(
-        padding: const EdgeInsets.all(5.0), // Adjust the padding as needed
-        child: Container(
-          decoration: BoxDecoration(
-            color: const Color(0xFFF9F8FD),
-            borderRadius: BorderRadius.circular(10.0),
-            border: Border.all(
-              color: CupertinoColors.systemGrey, // Replace with your desired border color
-              width: 2, // Adjust the border width as needed
+        padding: const EdgeInsets.all(5.0),
+        child: Material(
+          elevation: 3, // Adjust the elevation value as needed
+          borderRadius: BorderRadius.circular(10.0),
+          child: Padding(
+            padding: const EdgeInsets.only(
+              bottom: 8.0,
+              top: 8.0,
             ),
-          ),
-          child: CupertinoListTile(
-            title: Text(
-              poli.namaPoli,
-              style: const TextStyle(
-                fontWeight: FontWeight.w200, // Adjust the font weight as needed
-                fontFamily: 'Helvetica', // Replace with your desired font family
+            child: CupertinoListTile(
+              title: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    poli.namaPoli,
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'sfmonoBold',
+                      fontSize: 21,
+                    ),
+                  ),
+                  const SizedBox(height: 5),
+                  Text(
+                    poli.deskripsiPoli,
+                    style: const TextStyle(
+                      fontFamily: 'sfmonoLight',
+                    ),
+                    maxLines: 3,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ],
               ),
             ),
           ),
