@@ -41,13 +41,17 @@ class PoliItem extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 5),
-                  Text(
-                    poli.deskripsiPoli,
-                    style: const TextStyle(
-                      fontFamily: 'sfmonoLight',
+                  Padding(
+                    padding: const EdgeInsets.only(
+                        left: 5.0), // Adjust the padding value as needed
+                    child: Text(
+                      poli.deskripsiPoli,
+                      style: const TextStyle(
+                        fontFamily: 'sfmonoLight',
+                      ),
+                      maxLines: 3,
+                      overflow: TextOverflow.ellipsis,
                     ),
-                    maxLines: 3,
-                    overflow: TextOverflow.ellipsis,
                   ),
                 ],
               ),

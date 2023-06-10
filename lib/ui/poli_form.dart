@@ -19,7 +19,7 @@ class _PoliFormState extends State<PoliForm> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: const Color(0xFF0C9869),
+          backgroundColor: Colors.transparent,
           elevation: 0,
           leading: IconButton(
             icon: SvgPicture.asset(
@@ -42,7 +42,7 @@ class _PoliFormState extends State<PoliForm> {
               children: [
                 Container(
                   decoration: const BoxDecoration(
-                    color: Color(0xFF0C9869),
+                    color: Colors.transparent,
                     borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(20),
                       bottomRight: Radius.circular(20),
@@ -57,8 +57,8 @@ class _PoliFormState extends State<PoliForm> {
                         style: TextStyle(
                           fontSize: 60,
                           // fontWeight: FontWeight.bold,
-                          color: Color(0xFFF9F8FD),
-                          fontFamily: 'Helvetica',
+                          color: Colors.black,
+                          fontFamily: 'sfmonoBold',
                         ),
                       ),
                       SizedBox(height: 20),
@@ -85,7 +85,7 @@ class _PoliFormState extends State<PoliForm> {
     return TextField(
       decoration: InputDecoration(
         labelText: "Title",
-        labelStyle: const TextStyle(color: Colors.blueGrey, fontFamily: 'Helvetica'),
+        labelStyle: const TextStyle(color: Colors.blueGrey, fontFamily: 'sfmonoLight'),
         hintStyle: const TextStyle(color: Colors.blueGrey),
         border: OutlineInputBorder(
           borderSide: const BorderSide(color: Colors.blueGrey),
@@ -98,7 +98,7 @@ class _PoliFormState extends State<PoliForm> {
       ),
       controller: _namaPoliCtrl,
       cursorColor: Colors.blueGrey,
-      style: const TextStyle(fontSize: 20, fontFamily: 'Helvetica'),
+      style: const TextStyle(fontSize: 20, fontFamily: 'sfmonoLight'),
     );
   }
 
@@ -106,8 +106,8 @@ class _PoliFormState extends State<PoliForm> {
     return TextField(
       decoration: InputDecoration(
         labelText: "Description",
-        labelStyle: const TextStyle(color: Colors.blueGrey, fontFamily: 'Helvetica'),
-        hintStyle: const TextStyle(color: Colors.blueGrey, fontFamily: 'Helvetica'),
+        labelStyle: const TextStyle(color: Colors.blueGrey, fontFamily: 'sfmonoLight'),
+        hintStyle: const TextStyle(color: Colors.blueGrey, fontFamily: 'sfmonoLight'),
         border: OutlineInputBorder(
           borderSide: const BorderSide(color: Colors.blueGrey),
           borderRadius: BorderRadius.circular(5),
@@ -119,7 +119,8 @@ class _PoliFormState extends State<PoliForm> {
       ),
       controller: _deskripsiPoliCtrl,
       cursorColor: Colors.blueGrey,
-      style: const TextStyle(fontSize: 20, color: Colors.black, fontFamily: 'Helvetica'),
+      style:
+          const TextStyle(fontSize: 20, color: Colors.black, fontFamily: 'sfmonoLight'),
       maxLines: null, // set text color to black
     );
   }
@@ -143,7 +144,7 @@ class _PoliFormState extends State<PoliForm> {
         child: SvgPicture.asset(
           'assets/icons/save.svg', // Replace with the path to your SVG icon file
           colorFilter: const ColorFilter.mode(
-            Color(0xFF0C9869),
+            Colors.black,
             BlendMode.srcIn,
           ),
         ),

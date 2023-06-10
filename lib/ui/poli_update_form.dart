@@ -36,7 +36,7 @@ class _PoliUpdateFormState extends State<PoliUpdateForm> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: const Color(0xFF0C9869),
+          backgroundColor: Colors.transparent,
           elevation: 0,
           leading: IconButton(
             icon: SvgPicture.asset(
@@ -59,7 +59,7 @@ class _PoliUpdateFormState extends State<PoliUpdateForm> {
               children: [
                 Container(
                   decoration: const BoxDecoration(
-                    color: Color(0xFF0C9869),
+                    color: Colors.transparent,
                     borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(20),
                       bottomRight: Radius.circular(20),
@@ -74,8 +74,8 @@ class _PoliUpdateFormState extends State<PoliUpdateForm> {
                         style: TextStyle(
                           fontSize: 60,
                           // fontWeight: FontWeight.bold,
-                          color: Color(0xFFF9F8FD),
-                          fontFamily: 'Helvetica',
+                          color: Colors.black,
+                          fontFamily: 'sfmonoBold',
                         ),
                       ),
                       SizedBox(height: 20),
@@ -102,8 +102,8 @@ class _PoliUpdateFormState extends State<PoliUpdateForm> {
     return TextField(
       decoration: InputDecoration(
         labelText: "Title",
-        labelStyle: const TextStyle(color: Colors.blueGrey, fontFamily: 'Helvetica'),
-        hintStyle: const TextStyle(color: Colors.blueGrey, fontFamily: 'Helvetica'),
+        labelStyle: const TextStyle(color: Colors.blueGrey, fontFamily: 'sfmonoLight'),
+        hintStyle: const TextStyle(color: Colors.blueGrey, fontFamily: 'sfmonoLight'),
         border: OutlineInputBorder(
           borderSide: const BorderSide(color: Colors.blueGrey),
           borderRadius: BorderRadius.circular(5),
@@ -122,8 +122,8 @@ class _PoliUpdateFormState extends State<PoliUpdateForm> {
     return TextField(
       decoration: InputDecoration(
         labelText: "Description",
-        labelStyle: const TextStyle(color: Colors.blueGrey, fontFamily: 'Helvetica'),
-        hintStyle: const TextStyle(color: Colors.blueGrey, fontFamily: 'Helvetica'),
+        labelStyle: const TextStyle(color: Colors.blueGrey, fontFamily: 'sfmonoLight'),
+        hintStyle: const TextStyle(color: Colors.blueGrey, fontFamily: 'sfmonoLight'),
         border: OutlineInputBorder(
           borderSide: const BorderSide(color: Colors.blueGrey),
           borderRadius: BorderRadius.circular(5),
@@ -140,24 +140,33 @@ class _PoliUpdateFormState extends State<PoliUpdateForm> {
   }
 
   _tombolSimpan() {
-    return IconButton(
-      onPressed: () async {
-        Poli poli =
-            Poli(namaPoli: _namaPoliCtrl.text, deskripsiPoli: _deskripsiPoliCtrl.text);
-        String id = widget.poli.id.toString();
-        await PoliService().ubah(poli, id).then((value) {
-          Navigator.pop(context);
-          Navigator.pushReplacement(
-              context, MaterialPageRoute(builder: (context) => PoliDetail(poli: value)));
-        });
-      },
-      icon: Transform.scale(
-        scale: 2, // Adjust the scale factor to increase or decrease the size
-        child: SvgPicture.asset(
-          'assets/icons/save.svg', // Replace with the path to your SVG icon file
-          colorFilter: const ColorFilter.mode(
-            Color(0xFF0C9869),
-            BlendMode.srcIn,
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: IconButton(
+        onPressed: () async {
+          Poli poli = Poli(
+            namaPoli: _namaPoliCtrl.text,
+            deskripsiPoli: _deskripsiPoliCtrl.text,
+          );
+          String id = widget.poli.id.toString();
+          await PoliService().ubah(poli, id).then((value) {
+            Navigator.pop(context);
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) => PoliDetail(poli: value)),
+            );
+          });
+        },
+        icon: Transform.scale(
+          scale: 2,
+          child: SvgPicture.asset(
+            'assets/icons/save.svg',
+            colorFilter: const ColorFilter.mode(
+              Colors.black,
+              BlendMode.srcIn,
+            ),
           ),
         ),
       ),

@@ -75,13 +75,17 @@ class _PoliDetailState extends State<PoliDetail> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        const SizedBox(height: 5), // Add some vertical spacing
-                        Text(
-                          "${snapshot.data.namaPoli}",
-                          style: const TextStyle(
-                            fontSize: 60,
-                            // fontWeight: FontWeight.bold,
-                            fontFamily: 'Helvetica',
+                        const SizedBox(height: 5),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 20), // Add horizontal padding
+                          child: Text(
+                            "${snapshot.data.namaPoli}",
+                            style: const TextStyle(
+                              fontSize: 60,
+                              fontFamily: 'sfmonoBold',
+                            ),
+                            textAlign: TextAlign.center,
                           ),
                         ),
                         const SizedBox(height: 20),
@@ -89,14 +93,14 @@ class _PoliDetailState extends State<PoliDetail> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.all(10.0),
+                    padding: const EdgeInsets.all(15.0),
                     child: Align(
                       alignment: Alignment.centerLeft,
                       child: Text(
                         "${snapshot.data.deskripsiPoli}",
                         style: const TextStyle(
                           fontSize: 20,
-                          fontFamily: 'Helvetica',
+                          fontFamily: 'sfmonoLight',
                         ),
                       ),
                     ),
@@ -159,7 +163,7 @@ class _PoliDetailState extends State<PoliDetail> {
         AlertDialog alertDialog = AlertDialog(
           content: const Text(
             "Are you sure want to delete this note?",
-            style: TextStyle(fontSize: 20, fontFamily: 'Helvetica'),
+            style: TextStyle(fontSize: 20, fontFamily: 'sfmonoLight'),
           ),
           actions: [
             StreamBuilder(
@@ -183,7 +187,7 @@ class _PoliDetailState extends State<PoliDetail> {
                   style: TextStyle(
                     color: Colors.blueGrey,
                     fontSize: 16,
-                    fontFamily: 'Helvetica',
+                    fontFamily: 'sfmonoLight',
                   ),
                 ),
               ),
@@ -201,7 +205,7 @@ class _PoliDetailState extends State<PoliDetail> {
                 style: TextStyle(
                   color: Colors.blueGrey,
                   fontSize: 16,
-                  fontFamily: 'Helvetica',
+                  fontFamily: 'sfmonoLight',
                 ),
               ),
             ),
