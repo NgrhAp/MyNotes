@@ -85,7 +85,7 @@ class _PoliFormState extends State<PoliForm> {
     return TextField(
       decoration: InputDecoration(
         labelText: "Title",
-        labelStyle: const TextStyle(color: Colors.blueGrey, fontFamily: 'sfmonoLight'),
+        labelStyle: const TextStyle(color: Colors.blueGrey, fontFamily: 'sfmonoRegular'),
         hintStyle: const TextStyle(color: Colors.blueGrey),
         border: OutlineInputBorder(
           borderSide: const BorderSide(color: Colors.blueGrey),
@@ -98,7 +98,7 @@ class _PoliFormState extends State<PoliForm> {
       ),
       controller: _namaPoliCtrl,
       cursorColor: Colors.blueGrey,
-      style: const TextStyle(fontSize: 20, fontFamily: 'sfmonoLight'),
+      style: const TextStyle(fontSize: 20, fontFamily: 'sfmonoRegular'),
     );
   }
 
@@ -106,8 +106,8 @@ class _PoliFormState extends State<PoliForm> {
     return TextField(
       decoration: InputDecoration(
         labelText: "Description",
-        labelStyle: const TextStyle(color: Colors.blueGrey, fontFamily: 'sfmonoLight'),
-        hintStyle: const TextStyle(color: Colors.blueGrey, fontFamily: 'sfmonoLight'),
+        labelStyle: const TextStyle(color: Colors.blueGrey, fontFamily: 'sfmonoRegular'),
+        hintStyle: const TextStyle(color: Colors.blueGrey, fontFamily: 'sfmonoRegular'),
         border: OutlineInputBorder(
           borderSide: const BorderSide(color: Colors.blueGrey),
           borderRadius: BorderRadius.circular(5),
@@ -120,7 +120,7 @@ class _PoliFormState extends State<PoliForm> {
       controller: _deskripsiPoliCtrl,
       cursorColor: Colors.blueGrey,
       style:
-          const TextStyle(fontSize: 20, color: Colors.black, fontFamily: 'sfmonoLight'),
+          const TextStyle(fontSize: 20, color: Colors.black, fontFamily: 'sfmonoRegular'),
       maxLines: null, // set text color to black
     );
   }

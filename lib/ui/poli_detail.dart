@@ -100,7 +100,7 @@ class _PoliDetailState extends State<PoliDetail> {
                         "${snapshot.data.deskripsiPoli}",
                         style: const TextStyle(
                           fontSize: 20,
-                          fontFamily: 'sfmonoLight',
+                          fontFamily: 'sfmonoRegular',
                         ),
                       ),
                     ),
@@ -163,7 +163,7 @@ class _PoliDetailState extends State<PoliDetail> {
         AlertDialog alertDialog = AlertDialog(
           content: const Text(
             "Are you sure want to delete this note?",
-            style: TextStyle(fontSize: 20, fontFamily: 'sfmonoLight'),
+            style: TextStyle(fontSize: 20, fontFamily: 'sfmonoRegular'),
           ),
           actions: [
             StreamBuilder(
@@ -187,7 +187,7 @@ class _PoliDetailState extends State<PoliDetail> {
                   style: TextStyle(
                     color: Colors.blueGrey,
                     fontSize: 16,
-                    fontFamily: 'sfmonoLight',
+                    fontFamily: 'sfmonoRegular',
                   ),
                 ),
               ),
@@ -205,7 +205,7 @@ class _PoliDetailState extends State<PoliDetail> {
                 style: TextStyle(
                   color: Colors.blueGrey,
                   fontSize: 16,
-                  fontFamily: 'sfmonoLight',
+                  fontFamily: 'sfmonoRegular',
                 ),
               ),
             ),

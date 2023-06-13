@@ -47,7 +47,7 @@ class PoliItem extends StatelessWidget {
                     child: Text(
                       poli.deskripsiPoli,
                       style: const TextStyle(
-                        fontFamily: 'sfmonoLight',
+                        fontFamily: 'sfmonoRegular',
                       ),
                       maxLines: 3,
                       overflow: TextOverflow.ellipsis,

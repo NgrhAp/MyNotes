@@ -102,8 +102,8 @@ class _PoliUpdateFormState extends State<PoliUpdateForm> {
     return TextField(
       decoration: InputDecoration(
         labelText: "Title",
-        labelStyle: const TextStyle(color: Colors.blueGrey, fontFamily: 'sfmonoLight'),
-        hintStyle: const TextStyle(color: Colors.blueGrey, fontFamily: 'sfmonoLight'),
+        labelStyle: const TextStyle(color: Colors.blueGrey, fontFamily: 'sfmonoRegular'),
+        hintStyle: const TextStyle(color: Colors.blueGrey, fontFamily: 'sfmonoRegular'),
         border: OutlineInputBorder(
           borderSide: const BorderSide(color: Colors.blueGrey),
           borderRadius: BorderRadius.circular(5),
@@ -122,8 +122,8 @@ class _PoliUpdateFormState extends State<PoliUpdateForm> {
     return TextField(
       decoration: InputDecoration(
         labelText: "Description",
-        labelStyle: const TextStyle(color: Colors.blueGrey, fontFamily: 'sfmonoLight'),
-        hintStyle: const TextStyle(color: Colors.blueGrey, fontFamily: 'sfmonoLight'),
+        labelStyle: const TextStyle(color: Colors.blueGrey, fontFamily: 'sfmonoRegular'),
+        hintStyle: const TextStyle(color: Colors.blueGrey, fontFamily: 'sfmonoRegular'),
         border: OutlineInputBorder(
           borderSide: const BorderSide(color: Colors.blueGrey),
           borderRadius: BorderRadius.circular(5),
