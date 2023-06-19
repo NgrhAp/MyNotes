@@ -115,6 +115,8 @@ class _PoliUpdateFormState extends State<PoliUpdateForm> {
         ),
         controller: _namaPoliCtrl,
         cursorColor: Colors.blueGrey,
+                maxLines: null,
+
         style: const TextStyle(fontSize: 20, fontFamily: 'sfmonoRegular'),
       ),
     );
@@ -137,6 +139,8 @@ class _PoliUpdateFormState extends State<PoliUpdateForm> {
         ),
         controller: _deskripsiPoliCtrl,
         cursorColor: Colors.blueGrey,
+                maxLines: null,
+
         style: const TextStyle(fontSize: 20, fontFamily: 'sfmonoRegular'),
       ),
     );
