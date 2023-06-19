@@ -42,7 +42,8 @@ class _PoliPageState extends State<PoliPage> {
                 ),
               );
             }
-            if (!snapshot.hasData && snapshot.connectionState == ConnectionState.done) {
+            if (!snapshot.hasData &&
+                snapshot.connectionState == ConnectionState.done) {
               return const Text(
                 'Data Kosong',
                 style: TextStyle(
@@ -60,7 +61,6 @@ class _PoliPageState extends State<PoliPage> {
                   children: [
                     Container(
                       decoration: const BoxDecoration(
-                        // color: Color(0xFF0C9869),
                         borderRadius: BorderRadius.only(
                           bottomLeft: Radius.circular(20),
                           bottomRight: Radius.circular(20),
@@ -71,14 +71,13 @@ class _PoliPageState extends State<PoliPage> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: const [
-                            SizedBox(height: 25), // Add some vertical spacing
                             Text(
                               "Notes",
                               style: TextStyle(
                                 fontSize: 60,
-                                // fontWeight: FontWeight.bold,
                                 color: Colors.black,
                                 fontFamily: 'sfmonoBold',
+                                fontWeight: FontWeight.bold,
                               ),
                             ),
                             SizedBox(height: 30),
@@ -122,7 +121,7 @@ class _PoliPageState extends State<PoliPage> {
                           color: Colors.grey.withOpacity(0.5),
                           spreadRadius: 2,
                           blurRadius: 5,
-                          offset: const Offset(0, 3), // changes position of shadow
+                          offset: const Offset(0, 3),
                         ),
                       ],
                     ),
@@ -142,10 +141,9 @@ class _PoliPageState extends State<PoliPage> {
                                 );
                               },
                               icon: Transform.scale(
-                                scale:
-                                    1, // Adjust the scale factor to increase or decrease the size
+                                scale: 1,
                                 child: SvgPicture.asset(
-                                  'assets/icons/add.svg', // Replace with the path to your SVG icon file
+                                  'assets/icons/add.svg',
                                 ),
                               ),
                             ),

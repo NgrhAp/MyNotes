@@ -21,7 +21,7 @@ class PoliItem extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(5.0),
         child: Material(
-          elevation: 3, // Adjust the elevation value as needed
+          elevation: 5, // Adjust the elevation value as needed
           borderRadius: BorderRadius.circular(10.0),
           child: Padding(
             padding: const EdgeInsets.only(

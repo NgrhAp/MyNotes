@@ -99,43 +99,46 @@ class _PoliUpdateFormState extends State<PoliUpdateForm> {
   }
 
   _fieldNamaPoli() {
-    return TextField(
-      decoration: InputDecoration(
-        labelText: "Title",
-        labelStyle: const TextStyle(color: Colors.blueGrey, fontFamily: 'sfmonoRegular'),
-        hintStyle: const TextStyle(color: Colors.blueGrey, fontFamily: 'sfmonoRegular'),
-        border: OutlineInputBorder(
-          borderSide: const BorderSide(color: Colors.blueGrey),
-          borderRadius: BorderRadius.circular(5),
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 16),
+      child: TextField(
+        decoration: const InputDecoration(
+          labelText: "Title",
+          labelStyle: TextStyle(color: Colors.blueGrey, fontFamily: 'sfmonoRegular'),
+          hintStyle: TextStyle(color: Colors.blueGrey),
+          border: UnderlineInputBorder(
+            borderSide: BorderSide(color: Colors.blueGrey),
+          ),
+          focusedBorder: UnderlineInputBorder(
+            borderSide: BorderSide(color: Colors.blueGrey),
+          ),
         ),
-        focusedBorder: OutlineInputBorder(
-          borderSide: const BorderSide(color: Colors.blueGrey),
-          borderRadius: BorderRadius.circular(5),
-        ),
+        controller: _namaPoliCtrl,
+        cursorColor: Colors.blueGrey,
+        style: const TextStyle(fontSize: 20, fontFamily: 'sfmonoRegular'),
       ),
-      controller: _namaPoliCtrl,
-      cursorColor: Colors.blueGrey,
     );
   }
 
   _fieldDeskripsiPoli() {
-    return TextField(
-      decoration: InputDecoration(
-        labelText: "Description",
-        labelStyle: const TextStyle(color: Colors.blueGrey, fontFamily: 'sfmonoRegular'),
-        hintStyle: const TextStyle(color: Colors.blueGrey, fontFamily: 'sfmonoRegular'),
-        border: OutlineInputBorder(
-          borderSide: const BorderSide(color: Colors.blueGrey),
-          borderRadius: BorderRadius.circular(5),
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 16),
+      child: TextField(
+        decoration: const InputDecoration(
+          labelText: "Description",
+          labelStyle: TextStyle(color: Colors.blueGrey, fontFamily: 'sfmonoRegular'),
+          hintStyle: TextStyle(color: Colors.blueGrey),
+          border: UnderlineInputBorder(
+            borderSide: BorderSide(color: Colors.blueGrey),
+          ),
+          focusedBorder: UnderlineInputBorder(
+            borderSide: BorderSide(color: Colors.blueGrey),
+          ),
         ),
-        focusedBorder: OutlineInputBorder(
-          borderSide: const BorderSide(color: Colors.blueGrey),
-          borderRadius: BorderRadius.circular(5),
-        ),
+        controller: _deskripsiPoliCtrl,
+        cursorColor: Colors.blueGrey,
+        style: const TextStyle(fontSize: 20, fontFamily: 'sfmonoRegular'),
       ),
-      controller: _deskripsiPoliCtrl,
-      cursorColor: Colors.blueGrey,
-      maxLines: null,
     );
   }
 

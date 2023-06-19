@@ -57,7 +57,8 @@ class _PoliDetailState extends State<PoliDetail> {
               child: CircularProgressIndicator(),
             );
           }
-          if (!snapshot.hasData && snapshot.connectionState == ConnectionState.done) {
+          if (!snapshot.hasData &&
+              snapshot.connectionState == ConnectionState.done) {
             return const Text('Data Tidak Ditemukan');
           }
           return Stack(
@@ -82,7 +83,7 @@ class _PoliDetailState extends State<PoliDetail> {
                           child: Text(
                             "${snapshot.data.namaPoli}",
                             style: const TextStyle(
-                              fontSize: 60,
+                              fontSize: 40,
                               fontFamily: 'sfmonoBold',
                             ),
                             textAlign: TextAlign.center,
@@ -134,7 +135,8 @@ class _PoliDetailState extends State<PoliDetail> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => PoliUpdateForm(poli: snapshot.data),
+                            builder: (context) =>
+                                PoliUpdateForm(poli: snapshot.data),
                           ),
                         );
                       },
