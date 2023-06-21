@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import '../service/poli_service.dart';
-import 'poli_page.dart';
-import 'poli_update_form.dart';
-import '../model/poli.dart';
+import '../service/note_service.dart';
+import 'note_page.dart';
+import 'note_update_form.dart';
+import '../model/note.dart';
 
-class PoliDetail extends StatefulWidget {
-  final Poli poli;
+class NoteDetail extends StatefulWidget {
+  final Note note;
 
-  const PoliDetail({Key? key, required this.poli}) : super(key: key);
-  _PoliDetailState createState() => _PoliDetailState();
+  const NoteDetail({Key? key, required this.note}) : super(key: key);
+  _NoteDetailState createState() => _NoteDetailState();
 }
 
-class _PoliDetailState extends State<PoliDetail> {
-  Stream<Poli> getData() async* {
-    Poli data = await PoliService().getById(widget.poli.id.toString());
+class _NoteDetailState extends State<NoteDetail> {
+  Stream<Note> getData() async* {
+    Note data = await NoteService().getById(widget.note.id.toString());
     yield data;
   }
 
@@ -26,22 +26,22 @@ class _PoliDetailState extends State<PoliDetail> {
         elevation: 0,
         leading: IconButton(
           icon: SvgPicture.asset(
-            'assets/icons/back.svg', // Replace with your SVG icon path
-            width: 40, // Set the desired width for the icon
-            height: 40, // Set the desired height for the icon
+            'assets/icons/back.svg', 
+            width: 40, 
+            height: 40, 
           ),
           onPressed: () {
             Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const PoliPage(),
+                  builder: (context) => const NotePage(),
                 ));
           },
         ),
         actions: [
           Padding(
             padding: const EdgeInsets.all(
-                8.0), // Adjust the padding values as per your preference
+                8.0), 
             child: _tombolHapus(),
           ),
         ],
@@ -79,9 +79,9 @@ class _PoliDetailState extends State<PoliDetail> {
                         const SizedBox(height: 5),
                         Padding(
                           padding: const EdgeInsets.symmetric(
-                              horizontal: 20), // Add horizontal padding
+                              horizontal: 20), 
                           child: Text(
-                            "${snapshot.data.namaPoli}",
+                            "${snapshot.data.titleNote}",
                             style: const TextStyle(
                               fontSize: 40,
                               fontFamily: 'sfmonoBold',
@@ -98,7 +98,7 @@ class _PoliDetailState extends State<PoliDetail> {
                     child: Align(
                       alignment: Alignment.centerLeft,
                       child: Text(
-                        "${snapshot.data.deskripsiPoli}",
+                        "${snapshot.data.descriptionNote}",
                         style: const TextStyle(
                           fontSize: 20,
                           fontFamily: 'sfmonoRegular',
@@ -111,7 +111,7 @@ class _PoliDetailState extends State<PoliDetail> {
               Positioned(
                 bottom: 20.0,
                 right: 30.0,
-                // Apply circular shape to the Material widget
+              
                 child: Container(
                   decoration: BoxDecoration(
                     color: Colors.white,
@@ -123,7 +123,7 @@ class _PoliDetailState extends State<PoliDetail> {
                         color: Colors.grey.withOpacity(0.5),
                         spreadRadius: 2,
                         blurRadius: 5,
-                        offset: const Offset(0, 3), // changes position of shadow
+                        offset: const Offset(0, 3),
                       ),
                     ],
                   ),
@@ -136,13 +136,13 @@ class _PoliDetailState extends State<PoliDetail> {
                           context,
                           MaterialPageRoute(
                             builder: (context) =>
-                                PoliUpdateForm(poli: snapshot.data),
+                                NoteUpdateForm(note: snapshot.data),
                           ),
                         );
                       },
                       icon: Transform.scale(
                         scale:
-                            1, // Adjust the scale factor to increase or decrease the size
+                            1,
                         child: const Icon(
                           Icons.mode_edit,
                           color: Colors.black,
@@ -172,11 +172,11 @@ class _PoliDetailState extends State<PoliDetail> {
               stream: getData(),
               builder: (context, AsyncSnapshot snapshot) => ElevatedButton(
                 onPressed: () async {
-                  await PoliService().hapus(snapshot.data).then((value) {
+                  await NoteService().hapus(snapshot.data).then((value) {
                     Navigator.pop(context);
                     Navigator.pushReplacement(
                       context,
-                      MaterialPageRoute(builder: (context) => const PoliPage()),
+                      MaterialPageRoute(builder: (context) => const NotePage()),
                     );
                   });
                 },

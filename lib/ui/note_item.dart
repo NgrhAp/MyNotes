@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import '../model/poli.dart';
-import 'poli_detail.dart';
+import '../model/note.dart';
+import 'note_detail.dart';
 import 'package:flutter/cupertino.dart';
 
-class PoliItem extends StatelessWidget {
-  final Poli poli;
+class NoteItem extends StatelessWidget {
+  final Note note;
 
-  const PoliItem({Key? key, required this.poli, required TextStyle textStyle})
+  const NoteItem({Key? key, required this.note, required TextStyle textStyle})
       : super(key: key);
 
   @override
@@ -15,7 +15,7 @@ class PoliItem extends StatelessWidget {
       onTap: () {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => PoliDetail(poli: poli)),
+          MaterialPageRoute(builder: (context) => NoteDetail(note: note)),
         );
       },
       child: Padding(
@@ -33,7 +33,7 @@ class PoliItem extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    poli.namaPoli,
+                    note.titleNote,
                     style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       fontFamily: 'sfmonoBold',
@@ -45,7 +45,7 @@ class PoliItem extends StatelessWidget {
                     padding: const EdgeInsets.only(
                         left: 5.0), // Adjust the padding value as needed
                     child: Text(
-                      poli.deskripsiPoli,
+                      note.descriptionNote,
                       style: const TextStyle(
                         fontFamily: 'sfmonoRegular',
                       ),

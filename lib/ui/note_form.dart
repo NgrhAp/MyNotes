@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:klinik_pahase2/model/poli.dart';
-import 'package:klinik_pahase2/service/poli_service.dart';
-import 'package:klinik_pahase2/ui/poli_page.dart';
-import 'poli_detail.dart';
+import 'package:klinik_pahase2/model/note.dart';
+import 'package:klinik_pahase2/service/note_service.dart';
+import 'package:klinik_pahase2/ui/note_page.dart';
+import 'note_detail.dart';
 
-class PoliForm extends StatefulWidget {
-  const PoliForm({Key? key}) : super(key: key);
-  _PoliFormState createState() => _PoliFormState();
+class NoteForm extends StatefulWidget {
+  const NoteForm({Key? key}) : super(key: key);
+  _NoteFormState createState() => _NoteFormState();
 }
 
-class _PoliFormState extends State<PoliForm> {
+class _NoteFormState extends State<NoteForm> {
   final _formKey = GlobalKey<FormState>();
-  final _namaPoliCtrl = TextEditingController();
-  final _deskripsiPoliCtrl = TextEditingController();
+  final _titleNoteCtrl = TextEditingController();
+  final _descriptionNoteCtrl = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -23,15 +23,15 @@ class _PoliFormState extends State<PoliForm> {
           elevation: 0,
           leading: IconButton(
             icon: SvgPicture.asset(
-              'assets/icons/back.svg', // Replace with your SVG icon path
-              width: 40, // Set the desired width for the icon
-              height: 40, // Set the desired height for the icon
+              'assets/icons/back.svg', 
+              width: 40, 
+              height: 40,
             ),
             onPressed: () {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const PoliPage(),
+                    builder: (context) => const NotePage(),
                   ));
             },
           ),
@@ -67,11 +67,11 @@ class _PoliFormState extends State<PoliForm> {
                 ),
                 const SizedBox(height: 20),
                 Expanded(
-                  child: _fieldNamaPoli(),
+                  child: _fieldTitleNote(),
                 ),
                 const SizedBox(height: 20),
                 Expanded(
-                  child: _fieldDeskripsiPoli(),
+                  child: _fieldDescriptionNote(),
                 ),
                 const SizedBox(height: 20),
                 _tombolSimpan(),
@@ -81,7 +81,7 @@ class _PoliFormState extends State<PoliForm> {
         ));
   }
 
-  _fieldNamaPoli() {
+  _fieldTitleNote() {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 16),
       child: TextField(
@@ -96,7 +96,7 @@ class _PoliFormState extends State<PoliForm> {
             borderSide: BorderSide(color: Colors.blueGrey),
           ),
         ),
-        controller: _namaPoliCtrl,
+        controller: _titleNoteCtrl,
         cursorColor: Colors.blueGrey,
         maxLines: null,
         style: const TextStyle(fontSize: 20, fontFamily: 'sfmonoRegular'),
@@ -104,7 +104,7 @@ class _PoliFormState extends State<PoliForm> {
     );
   }
 
-  _fieldDeskripsiPoli() {
+  _fieldDescriptionNote() {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 16),
       child: TextField(
@@ -119,7 +119,7 @@ class _PoliFormState extends State<PoliForm> {
             borderSide: BorderSide(color: Colors.blueGrey),
           ),
         ),
-        controller: _deskripsiPoliCtrl,
+        controller: _descriptionNoteCtrl,
         cursorColor: Colors.blueGrey,
         maxLines: null,
         style: const TextStyle(fontSize: 20, fontFamily: 'sfmonoRegular'),
@@ -130,14 +130,14 @@ class _PoliFormState extends State<PoliForm> {
   _tombolSimpan() {
     return IconButton(
       onPressed: () async {
-        Poli poli = Poli(
-          namaPoli: _namaPoliCtrl.text,
-          deskripsiPoli: _deskripsiPoliCtrl.text,
+        Note note = Note(
+          titleNote: _titleNoteCtrl.text,
+          descriptionNote: _descriptionNoteCtrl.text,
         );
-        await PoliService().simpan(poli).then((value) {
+        await NoteService().simpan(note).then((value) {
           Navigator.pushReplacement(
             context,
-            MaterialPageRoute(builder: (context) => PoliDetail(poli: value)),
+            MaterialPageRoute(builder: (context) => NoteDetail(note: value)),
           );
         });
       },

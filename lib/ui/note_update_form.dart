@@ -1,27 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:klinik_pahase2/ui/poli_page.dart';
-import '../model/poli.dart';
-import '../service/poli_service.dart';
-import 'poli_detail.dart';
+import 'package:klinik_pahase2/ui/note_page.dart';
+import '../model/note.dart';
+import '../service/note_service.dart';
+import 'note_detail.dart';
 
-class PoliUpdateForm extends StatefulWidget {
-  final Poli poli;
+class NoteUpdateForm extends StatefulWidget {
+  final Note note;
 
-  const PoliUpdateForm({Key? key, required this.poli}) : super(key: key);
-  _PoliUpdateFormState createState() => _PoliUpdateFormState();
+  const NoteUpdateForm({Key? key, required this.note}) : super(key: key);
+  _NoteUpdateFormState createState() => _NoteUpdateFormState();
 }
 
-class _PoliUpdateFormState extends State<PoliUpdateForm> {
+class _NoteUpdateFormState extends State<NoteUpdateForm> {
   final _formKey = GlobalKey<FormState>();
-  final _namaPoliCtrl = TextEditingController();
-  final _deskripsiPoliCtrl = TextEditingController();
+  final _titleNoteCtrl = TextEditingController();
+  final _descriptionNoteCtrl = TextEditingController();
 
-  Future<Poli> getData() async {
-    Poli data = await PoliService().getById(widget.poli.id.toString());
+  Future<Note> getData() async {
+    Note data = await NoteService().getById(widget.note.id.toString());
     setState(() {
-      _namaPoliCtrl.text = data.namaPoli;
-      _deskripsiPoliCtrl.text = data.deskripsiPoli;
+      _titleNoteCtrl.text = data.titleNote;
+      _descriptionNoteCtrl.text = data.descriptionNote;
     });
     return data;
   }
@@ -48,7 +48,7 @@ class _PoliUpdateFormState extends State<PoliUpdateForm> {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const PoliPage(),
+                    builder: (context) => const NotePage(),
                   ));
             },
           ),
@@ -84,11 +84,11 @@ class _PoliUpdateFormState extends State<PoliUpdateForm> {
                 ),
                 const SizedBox(height: 20),
                 Expanded(
-                  child: _fieldNamaPoli(),
+                  child: _fieldTitleNote(),
                 ),
                 const SizedBox(height: 20),
                 Expanded(
-                  child: _fieldDeskripsiPoli(),
+                  child: _fieldDescriptionNote(),
                 ),
                 const SizedBox(height: 20),
                 _tombolSimpan(),
@@ -98,7 +98,7 @@ class _PoliUpdateFormState extends State<PoliUpdateForm> {
         ));
   }
 
-  _fieldNamaPoli() {
+  _fieldTitleNote() {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 16),
       child: TextField(
@@ -113,16 +113,15 @@ class _PoliUpdateFormState extends State<PoliUpdateForm> {
             borderSide: BorderSide(color: Colors.blueGrey),
           ),
         ),
-        controller: _namaPoliCtrl,
+        controller: _titleNoteCtrl,
         cursorColor: Colors.blueGrey,
-                maxLines: null,
-
+        maxLines: null,
         style: const TextStyle(fontSize: 20, fontFamily: 'sfmonoRegular'),
       ),
     );
   }
 
-  _fieldDeskripsiPoli() {
+  _fieldDescriptionNote() {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 16),
       child: TextField(
@@ -137,10 +136,9 @@ class _PoliUpdateFormState extends State<PoliUpdateForm> {
             borderSide: BorderSide(color: Colors.blueGrey),
           ),
         ),
-        controller: _deskripsiPoliCtrl,
+        controller: _descriptionNoteCtrl,
         cursorColor: Colors.blueGrey,
-                maxLines: null,
-
+        maxLines: null,
         style: const TextStyle(fontSize: 20, fontFamily: 'sfmonoRegular'),
       ),
     );
@@ -153,16 +151,16 @@ class _PoliUpdateFormState extends State<PoliUpdateForm> {
       ),
       child: IconButton(
         onPressed: () async {
-          Poli poli = Poli(
-            namaPoli: _namaPoliCtrl.text,
-            deskripsiPoli: _deskripsiPoliCtrl.text,
+          Note note = Note(
+            titleNote: _titleNoteCtrl.text,
+            descriptionNote: _descriptionNoteCtrl.text,
           );
-          String id = widget.poli.id.toString();
-          await PoliService().ubah(poli, id).then((value) {
+          String id = widget.note.id.toString();
+          await NoteService().ubah(note, id).then((value) {
             Navigator.pop(context);
             Navigator.pushReplacement(
               context,
-              MaterialPageRoute(builder: (context) => PoliDetail(poli: value)),
+              MaterialPageRoute(builder: (context) => NoteDetail(note: value)),
             );
           });
         },

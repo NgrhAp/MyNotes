@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:klinik_pahase2/ui/poli_form.dart';
-import '../model/poli.dart';
-import '../service/poli_service.dart';
-import 'poli_item.dart';
+import 'package:klinik_pahase2/ui/note_form.dart';
+import '../model/note.dart';
+import '../service/note_service.dart';
+import 'note_item.dart';
 
-class PoliPage extends StatefulWidget {
-  const PoliPage({Key? key}) : super(key: key);
-  _PoliPageState createState() => _PoliPageState();
+class NotePage extends StatefulWidget {
+  const NotePage({Key? key}) : super(key: key);
+  _NotePageState createState() => _NotePageState();
 }
 
-class _PoliPageState extends State<PoliPage> {
-  Stream<List<Poli>> getList() async* {
-    List<Poli> data = await PoliService().listData();
+class _NotePageState extends State<NotePage> {
+  Stream<List<Note>> getList() async* {
+    List<Note> data = await NoteService().listData();
     yield data;
   }
 
@@ -67,10 +67,11 @@ class _PoliPageState extends State<PoliPage> {
                         ),
                       ),
                       child: Padding(
-                        padding: const EdgeInsets.only(left: 40.0, top: 40),
+                        padding: const EdgeInsets.only(left: 40.0, top: 60),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: const [
+                            SizedBox(height: 30),
                             Text(
                               "Notes",
                               style: TextStyle(
@@ -92,8 +93,8 @@ class _PoliPageState extends State<PoliPage> {
                           return Padding(
                             padding: const EdgeInsets.only(
                                 left: 25.0, bottom: 10.0, right: 35.0),
-                            child: PoliItem(
-                              poli: snapshot.data[index],
+                            child: NoteItem(
+                              note: snapshot.data[index],
                               textStyle: const TextStyle(
                                 color: Colors.black87,
                                 fontSize: 50,
@@ -137,7 +138,7 @@ class _PoliPageState extends State<PoliPage> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => const PoliForm()),
+                                      builder: (context) => const NoteForm()),
                                 );
                               },
                               icon: Transform.scale(
