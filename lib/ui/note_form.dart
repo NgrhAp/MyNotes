@@ -18,7 +18,7 @@ class _NoteFormState extends State<NoteForm> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: const Color(0xFFececec),
+        backgroundColor: const Color(0xFF191919),
         appBar: AppBar(
           backgroundColor: Colors.transparent,
           elevation: 0,
@@ -27,6 +27,10 @@ class _NoteFormState extends State<NoteForm> {
               'assets/icons/back.svg',
               width: 40,
               height: 40,
+              colorFilter: const ColorFilter.mode(
+                Colors.white,
+                BlendMode.srcIn,
+              ),
             ),
             onPressed: () {
               Navigator.push(
@@ -41,21 +45,18 @@ class _NoteFormState extends State<NoteForm> {
           children: [
             ListView(
               children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: const [
-                    SizedBox(height: 5), // Add some vertical spacing
-                    Text(
-                      "Add New",
-                      style: TextStyle(
-                        fontSize: 60,
-                        // fontWeight: FontWeight.bold,
-                        color: Colors.black,
-                        fontFamily: 'roboto',
-                      ),
+                const SizedBox(height: 5),
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 20),
+                  child: Text(
+                    "Add New",
+                    style: TextStyle(
+                      fontSize: 40,
+                      fontFamily: 'sfmonoBold',
+                      color: Colors.white,
                     ),
-                    SizedBox(height: 20),
-                  ],
+                    textAlign: TextAlign.center,
+                  ),
                 ),
                 const SizedBox(height: 20),
                 Expanded(
@@ -79,8 +80,7 @@ class _NoteFormState extends State<NoteForm> {
       child: TextField(
         decoration: const InputDecoration(
           labelText: "Title",
-          labelStyle: TextStyle(color: Colors.blueGrey, fontFamily: 'roboto'),
-          hintStyle: TextStyle(color: Colors.blueGrey),
+          labelStyle: TextStyle(color: Colors.white, fontFamily: 'roboto'),
           border: UnderlineInputBorder(
             borderSide: BorderSide(color: Colors.blueGrey),
           ),
@@ -91,7 +91,11 @@ class _NoteFormState extends State<NoteForm> {
         controller: _titleNoteCtrl,
         cursorColor: Colors.blueGrey,
         maxLines: null,
-        style: const TextStyle(fontSize: 20, fontFamily: 'roboto'),
+        style: const TextStyle(
+          fontSize: 20,
+          fontFamily: 'roboto',
+          color: Colors.white,
+        ),
       ),
     );
   }
@@ -102,8 +106,7 @@ class _NoteFormState extends State<NoteForm> {
       child: TextField(
         decoration: const InputDecoration(
           labelText: "Description",
-          labelStyle: TextStyle(color: Colors.blueGrey, fontFamily: 'roboto'),
-          hintStyle: TextStyle(color: Colors.blueGrey),
+          labelStyle: TextStyle(color: Colors.white, fontFamily: 'roboto'),
           border: UnderlineInputBorder(
             borderSide: BorderSide(color: Colors.blueGrey),
           ),
@@ -114,7 +117,11 @@ class _NoteFormState extends State<NoteForm> {
         controller: _descriptionNoteCtrl,
         cursorColor: Colors.blueGrey,
         maxLines: null,
-        style: const TextStyle(fontSize: 20, fontFamily: 'roboto'),
+        style: const TextStyle(
+          fontSize: 20,
+          fontFamily: 'roboto',
+          color: Colors.white,
+        ),
       ),
     );
   }
@@ -138,7 +145,7 @@ class _NoteFormState extends State<NoteForm> {
         child: SvgPicture.asset(
           'assets/icons/save.svg', // Replace with the path to your SVG icon file
           colorFilter: const ColorFilter.mode(
-            Colors.black,
+            Colors.white,
             BlendMode.srcIn,
           ),
         ),

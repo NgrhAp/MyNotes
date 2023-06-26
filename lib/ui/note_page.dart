@@ -101,47 +101,31 @@ class _NotePageState extends State<NotePage> {
                 Positioned(
                   bottom: 20.0,
                   right: 30.0,
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: const BorderRadius.all(
-                        Radius.circular(50),
-                      ),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withOpacity(0.5),
-                          spreadRadius: 2,
-                          blurRadius: 5,
-                          offset: const Offset(0, 3),
-                        ),
-                      ],
-                    ),
-                    child: Row(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: CircleAvatar(
-                            backgroundColor: Colors.transparent,
-                            radius: 20,
-                            child: IconButton(
-                              onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => const NoteForm()),
-                                );
-                              },
-                              icon: Transform.scale(
-                                scale: 1,
-                                child: SvgPicture.asset(
-                                  'assets/icons/add.svg',
-                                ),
+                  child: Row(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: CircleAvatar(
+                          backgroundColor: Colors.white,
+                          radius: 30,
+                          child: IconButton(
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const NoteForm()),
+                              );
+                            },
+                            icon: Transform.scale(
+                              scale: 0.8,
+                              child: SvgPicture.asset(
+                                'assets/icons/add.svg',
                               ),
                             ),
                           ),
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                 ),
               ],

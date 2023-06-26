@@ -21,15 +21,20 @@ class _NoteDetailState extends State<NoteDetail> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFececec),
+      backgroundColor: const Color(0xFF191919),
       appBar: AppBar(
-        backgroundColor: const Color(0xFFececec),
+        backgroundColor: const Color(0xFF191919),
         elevation: 0,
         leading: IconButton(
+          color: Colors.white,
           icon: SvgPicture.asset(
             'assets/icons/back.svg',
             width: 40,
             height: 40,
+            colorFilter: const ColorFilter.mode(
+              Colors.white,
+              BlendMode.srcIn,
+            ),
           ),
           onPressed: () {
             Navigator.push(
@@ -65,35 +70,22 @@ class _NoteDetailState extends State<NoteDetail> {
             children: [
               ListView(
                 children: [
-                  Container(
-                    decoration: const BoxDecoration(
-                      color: Colors.transparent,
-                      borderRadius: BorderRadius.only(
-                        bottomLeft: Radius.circular(20),
-                        bottomRight: Radius.circular(20),
+                  const SizedBox(height: 50),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    child: Text(
+                      "${snapshot.data.titleNote}",
+                      style: const TextStyle(
+                        fontSize: 40,
+                        fontFamily: 'sfmonoBold',
+                        color: Colors.white,
                       ),
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        const SizedBox(height: 5),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 20),
-                          child: Text(
-                            "${snapshot.data.titleNote}",
-                            style: const TextStyle(
-                              fontSize: 40,
-                              fontFamily: 'sfmonoBold',
-                            ),
-                            textAlign: TextAlign.center,
-                          ),
-                        ),
-                        const SizedBox(height: 20),
-                      ],
+                      textAlign: TextAlign.center,
                     ),
                   ),
+                  const SizedBox(height: 20),
                   Padding(
-                    padding: const EdgeInsets.all(15.0),
+                    padding: const EdgeInsets.all(30.0),
                     child: Align(
                       alignment: Alignment.centerLeft,
                       child: Text(
@@ -101,6 +93,7 @@ class _NoteDetailState extends State<NoteDetail> {
                         style: const TextStyle(
                           fontSize: 20,
                           fontFamily: 'roboto',
+                          color: Colors.white,
                         ),
                       ),
                     ),
@@ -110,45 +103,28 @@ class _NoteDetailState extends State<NoteDetail> {
               Positioned(
                 bottom: 20.0,
                 right: 30.0,
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: const BorderRadius.all(
-                      Radius.circular(80),
-                    ),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.5),
-                        spreadRadius: 2,
-                        blurRadius: 5,
-                        offset: const Offset(0, 3),
-                      ),
-                    ],
-                  ),
-                  child: CircleAvatar(
-                    backgroundColor: Colors.transparent,
-                    radius: 28,
-                    child: IconButton(
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) =>
-                                NoteUpdateForm(note: snapshot.data),
-                          ),
-                        );
-                      },
-                      icon: Transform.scale(
-                        scale: 1,
-                        child: const Icon(
-                          Icons.mode_edit,
-                          color: Colors.black,
+                child: CircleAvatar(
+                  backgroundColor: Colors.white,
+                  radius: 28,
+                  child: IconButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => NoteUpdateForm(note: snapshot.data),
                         ),
+                      );
+                    },
+                    icon: Transform.scale(
+                      scale: 1,
+                      child: const Icon(
+                        Icons.mode_edit,
+                        color: Colors.black,
                       ),
                     ),
                   ),
                 ),
-              )
+              ),
             ],
           );
         },
@@ -215,7 +191,7 @@ class _NoteDetailState extends State<NoteDetail> {
       icon: SvgPicture.asset(
         'assets/icons/delete.svg',
         colorFilter: const ColorFilter.mode(
-          Colors.red,
+          Colors.white,
           BlendMode.srcIn,
         ),
         width: 80,

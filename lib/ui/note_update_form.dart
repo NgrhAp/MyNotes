@@ -35,15 +35,19 @@ class _NoteUpdateFormState extends State<NoteUpdateForm> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: const Color(0xFFececec),
+        backgroundColor: const Color(0xFF191919),
         appBar: AppBar(
-          backgroundColor: const Color(0xFFececec),
+          backgroundColor: Colors.transparent,
           elevation: 0,
           leading: IconButton(
             icon: SvgPicture.asset(
-              'assets/icons/back.svg', // Replace with your SVG icon path
-              width: 40, // Set the desired width for the icon
-              height: 40, // Set the desired height for the icon
+              'assets/icons/back.svg',
+              width: 40,
+              height: 40,
+              colorFilter: const ColorFilter.mode(
+                Colors.white,
+                BlendMode.srcIn,
+              ),
             ),
             onPressed: () {
               Navigator.push(
@@ -67,7 +71,7 @@ class _NoteUpdateFormState extends State<NoteUpdateForm> {
                       style: TextStyle(
                         fontSize: 60,
                         // fontWeight: FontWeight.bold,
-                        color: Colors.black,
+                        color: Colors.white,
                         fontFamily: 'roboto',
                       ),
                     ),
@@ -96,8 +100,7 @@ class _NoteUpdateFormState extends State<NoteUpdateForm> {
       child: TextField(
         decoration: const InputDecoration(
           labelText: "Title",
-          labelStyle: TextStyle(color: Colors.blueGrey, fontFamily: 'roboto'),
-          hintStyle: TextStyle(color: Colors.blueGrey),
+          labelStyle: TextStyle(color: Colors.white, fontFamily: 'roboto'),
           border: UnderlineInputBorder(
             borderSide: BorderSide(color: Colors.blueGrey),
           ),
@@ -108,7 +111,11 @@ class _NoteUpdateFormState extends State<NoteUpdateForm> {
         controller: _titleNoteCtrl,
         cursorColor: Colors.blueGrey,
         maxLines: null,
-        style: const TextStyle(fontSize: 20, fontFamily: 'roboto'),
+        style: const TextStyle(
+          fontSize: 20,
+          fontFamily: 'roboto',
+          color: Colors.white,
+        ),
       ),
     );
   }
@@ -119,8 +126,7 @@ class _NoteUpdateFormState extends State<NoteUpdateForm> {
       child: TextField(
         decoration: const InputDecoration(
           labelText: "Description",
-          labelStyle: TextStyle(color: Colors.blueGrey, fontFamily: 'roboto'),
-          hintStyle: TextStyle(color: Colors.blueGrey),
+          labelStyle: TextStyle(color: Colors.white, fontFamily: 'roboto'),
           border: UnderlineInputBorder(
             borderSide: BorderSide(color: Colors.blueGrey),
           ),
@@ -131,7 +137,11 @@ class _NoteUpdateFormState extends State<NoteUpdateForm> {
         controller: _descriptionNoteCtrl,
         cursorColor: Colors.blueGrey,
         maxLines: null,
-        style: const TextStyle(fontSize: 20, fontFamily: 'roboto'),
+        style: const TextStyle(
+          fontSize: 20,
+          fontFamily: 'roboto',
+          color: Colors.white,
+        ),
       ),
     );
   }
@@ -161,7 +171,7 @@ class _NoteUpdateFormState extends State<NoteUpdateForm> {
           child: SvgPicture.asset(
             'assets/icons/save.svg',
             colorFilter: const ColorFilter.mode(
-              Colors.black,
+              Colors.white,
               BlendMode.srcIn,
             ),
           ),

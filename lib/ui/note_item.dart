@@ -21,32 +21,40 @@ class NoteItem extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(5.0),
         child: Material(
+          color: const Color(0xFF282828),
           elevation: 3, // Adjust the elevation value as needed
           borderRadius: BorderRadius.circular(10.0),
+
           child: Padding(
             padding: const EdgeInsets.only(
               bottom: 8.0,
               top: 8.0,
             ),
             child: CupertinoListTile(
+              backgroundColor: const Color(0xFF282828),
               title: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     note.titleNote,
                     style: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontFamily: 'roboto',
-                      fontSize: 21,
+                      fontFamily: 'sfMonoBold',
+                      fontSize: 25,
+                      color: Colors.white,
                     ),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(
-                        left: 5.0), // Adjust the padding value as needed
+                      left: 5.0,
+                      top: 5,
+                    ), // Adjust the padding value as needed
                     child: Text(
                       note.descriptionNote,
                       style: const TextStyle(
-                          fontFamily: 'roboto', fontWeight: FontWeight.w100),
+                        fontFamily: 'sfMonoBold',
+                        fontWeight: FontWeight.w100,
+                        color: Colors.white,
+                      ),
                       maxLines: 3,
                       overflow: TextOverflow.ellipsis,
                     ),
