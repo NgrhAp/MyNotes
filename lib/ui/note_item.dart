@@ -21,7 +21,7 @@ class NoteItem extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(5.0),
         child: Material(
-          elevation: 5, // Adjust the elevation value as needed
+          elevation: 3, // Adjust the elevation value as needed
           borderRadius: BorderRadius.circular(10.0),
           child: Padding(
             padding: const EdgeInsets.only(
@@ -36,19 +36,17 @@ class NoteItem extends StatelessWidget {
                     note.titleNote,
                     style: const TextStyle(
                       fontWeight: FontWeight.bold,
-                      fontFamily: 'sfmonoBold',
+                      fontFamily: 'roboto',
                       fontSize: 21,
                     ),
                   ),
-                  const SizedBox(height: 5),
                   Padding(
                     padding: const EdgeInsets.only(
                         left: 5.0), // Adjust the padding value as needed
                     child: Text(
                       note.descriptionNote,
                       style: const TextStyle(
-                        fontFamily: 'sfmonoRegular',
-                      ),
+                          fontFamily: 'roboto', fontWeight: FontWeight.w100),
                       maxLines: 3,
                       overflow: TextOverflow.ellipsis,
                     ),

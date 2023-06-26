@@ -21,14 +21,15 @@ class _NoteDetailState extends State<NoteDetail> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xFFececec),
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
+        backgroundColor: const Color(0xFFececec),
         elevation: 0,
         leading: IconButton(
           icon: SvgPicture.asset(
-            'assets/icons/back.svg', 
-            width: 40, 
-            height: 40, 
+            'assets/icons/back.svg',
+            width: 40,
+            height: 40,
           ),
           onPressed: () {
             Navigator.push(
@@ -40,8 +41,7 @@ class _NoteDetailState extends State<NoteDetail> {
         ),
         actions: [
           Padding(
-            padding: const EdgeInsets.all(
-                8.0), 
+            padding: const EdgeInsets.all(8.0),
             child: _tombolHapus(),
           ),
         ],
@@ -78,8 +78,7 @@ class _NoteDetailState extends State<NoteDetail> {
                       children: [
                         const SizedBox(height: 5),
                         Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 20), 
+                          padding: const EdgeInsets.symmetric(horizontal: 20),
                           child: Text(
                             "${snapshot.data.titleNote}",
                             style: const TextStyle(
@@ -101,7 +100,7 @@ class _NoteDetailState extends State<NoteDetail> {
                         "${snapshot.data.descriptionNote}",
                         style: const TextStyle(
                           fontSize: 20,
-                          fontFamily: 'sfmonoRegular',
+                          fontFamily: 'roboto',
                         ),
                       ),
                     ),
@@ -111,7 +110,6 @@ class _NoteDetailState extends State<NoteDetail> {
               Positioned(
                 bottom: 20.0,
                 right: 30.0,
-              
                 child: Container(
                   decoration: BoxDecoration(
                     color: Colors.white,
@@ -141,8 +139,7 @@ class _NoteDetailState extends State<NoteDetail> {
                         );
                       },
                       icon: Transform.scale(
-                        scale:
-                            1,
+                        scale: 1,
                         child: const Icon(
                           Icons.mode_edit,
                           color: Colors.black,
@@ -165,7 +162,7 @@ class _NoteDetailState extends State<NoteDetail> {
         AlertDialog alertDialog = AlertDialog(
           content: const Text(
             "Are you sure want to delete this note?",
-            style: TextStyle(fontSize: 20, fontFamily: 'sfmonoRegular'),
+            style: TextStyle(fontSize: 20, fontFamily: 'roboto'),
           ),
           actions: [
             StreamBuilder(
@@ -189,7 +186,7 @@ class _NoteDetailState extends State<NoteDetail> {
                   style: TextStyle(
                     color: Colors.blueGrey,
                     fontSize: 16,
-                    fontFamily: 'sfmonoRegular',
+                    fontFamily: 'roboto',
                   ),
                 ),
               ),
@@ -207,7 +204,7 @@ class _NoteDetailState extends State<NoteDetail> {
                 style: TextStyle(
                   color: Colors.blueGrey,
                   fontSize: 16,
-                  fontFamily: 'sfmonoRegular',
+                  fontFamily: 'roboto',
                 ),
               ),
             ),

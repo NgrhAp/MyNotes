@@ -90,6 +90,10 @@ flutter:
     - family: sfmonoRegular
       fonts:
         - asset: fonts/SFMonoRegular.woff
+
+    - family: roboto
+      fonts:
+        - asset: fonts/RobotoSlab-Medium.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro

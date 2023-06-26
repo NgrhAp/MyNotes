@@ -20,7 +20,7 @@ class _NotePageState extends State<NotePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        color: const Color(0xFFF9F8FD),
+        color: const Color(0xFF191919),
         child: StreamBuilder(
           stream: getList(),
           builder: (context, AsyncSnapshot snapshot) {
@@ -59,31 +59,21 @@ class _NotePageState extends State<NotePage> {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    Container(
-                      decoration: const BoxDecoration(
-                        borderRadius: BorderRadius.only(
-                          bottomLeft: Radius.circular(20),
-                          bottomRight: Radius.circular(20),
-                        ),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 40.0, top: 60),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: const [
-                            SizedBox(height: 30),
-                            Text(
-                              "Notes",
-                              style: TextStyle(
-                                fontSize: 60,
-                                color: Colors.black,
-                                fontFamily: 'sfmonoBold',
-                                fontWeight: FontWeight.bold,
-                              ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 40.0, top: 40),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: const [
+                          Text(
+                            "Notes",
+                            style: TextStyle(
+                              fontSize: 60,
+                              color: Colors.white,
+                              fontFamily: 'roboto',
+                              fontWeight: FontWeight.bold,
                             ),
-                            SizedBox(height: 30),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
                     ),
                     Expanded(
@@ -96,10 +86,10 @@ class _NotePageState extends State<NotePage> {
                             child: NoteItem(
                               note: snapshot.data[index],
                               textStyle: const TextStyle(
-                                color: Colors.black87,
+                                color: Colors.white,
                                 fontSize: 50,
                                 fontWeight: FontWeight.bold,
-                                fontFamily: 'Helvetica',
+                                fontFamily: 'roboto',
                               ),
                             ),
                           );

@@ -18,13 +18,14 @@ class _NoteFormState extends State<NoteForm> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: const Color(0xFFececec),
         appBar: AppBar(
           backgroundColor: Colors.transparent,
           elevation: 0,
           leading: IconButton(
             icon: SvgPicture.asset(
-              'assets/icons/back.svg', 
-              width: 40, 
+              'assets/icons/back.svg',
+              width: 40,
               height: 40,
             ),
             onPressed: () {
@@ -40,30 +41,21 @@ class _NoteFormState extends State<NoteForm> {
           children: [
             ListView(
               children: [
-                Container(
-                  decoration: const BoxDecoration(
-                    color: Colors.transparent,
-                    borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(20),
-                      bottomRight: Radius.circular(20),
-                    ),
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: const [
-                      SizedBox(height: 5), // Add some vertical spacing
-                      Text(
-                        "Add New",
-                        style: TextStyle(
-                          fontSize: 60,
-                          // fontWeight: FontWeight.bold,
-                          color: Colors.black,
-                          fontFamily: 'sfmonoBold',
-                        ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: const [
+                    SizedBox(height: 5), // Add some vertical spacing
+                    Text(
+                      "Add New",
+                      style: TextStyle(
+                        fontSize: 60,
+                        // fontWeight: FontWeight.bold,
+                        color: Colors.black,
+                        fontFamily: 'roboto',
                       ),
-                      SizedBox(height: 20),
-                    ],
-                  ),
+                    ),
+                    SizedBox(height: 20),
+                  ],
                 ),
                 const SizedBox(height: 20),
                 Expanded(
@@ -87,7 +79,7 @@ class _NoteFormState extends State<NoteForm> {
       child: TextField(
         decoration: const InputDecoration(
           labelText: "Title",
-          labelStyle: TextStyle(color: Colors.blueGrey, fontFamily: 'sfmonoRegular'),
+          labelStyle: TextStyle(color: Colors.blueGrey, fontFamily: 'roboto'),
           hintStyle: TextStyle(color: Colors.blueGrey),
           border: UnderlineInputBorder(
             borderSide: BorderSide(color: Colors.blueGrey),
@@ -99,7 +91,7 @@ class _NoteFormState extends State<NoteForm> {
         controller: _titleNoteCtrl,
         cursorColor: Colors.blueGrey,
         maxLines: null,
-        style: const TextStyle(fontSize: 20, fontFamily: 'sfmonoRegular'),
+        style: const TextStyle(fontSize: 20, fontFamily: 'roboto'),
       ),
     );
   }
@@ -110,7 +102,7 @@ class _NoteFormState extends State<NoteForm> {
       child: TextField(
         decoration: const InputDecoration(
           labelText: "Description",
-          labelStyle: TextStyle(color: Colors.blueGrey, fontFamily: 'sfmonoRegular'),
+          labelStyle: TextStyle(color: Colors.blueGrey, fontFamily: 'roboto'),
           hintStyle: TextStyle(color: Colors.blueGrey),
           border: UnderlineInputBorder(
             borderSide: BorderSide(color: Colors.blueGrey),
@@ -122,7 +114,7 @@ class _NoteFormState extends State<NoteForm> {
         controller: _descriptionNoteCtrl,
         cursorColor: Colors.blueGrey,
         maxLines: null,
-        style: const TextStyle(fontSize: 20, fontFamily: 'sfmonoRegular'),
+        style: const TextStyle(fontSize: 20, fontFamily: 'roboto'),
       ),
     );
   }
